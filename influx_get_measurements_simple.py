@@ -460,6 +460,8 @@ def get_observations(
     df["T_sup_220"] = T_sup_220
     df["T_ret_219"] = T_ret_219
     df["T_ret_220"] = T_ret_220
+    df["P_rad_219_calc"] = (df["V_flow_219"]/1000)*(df["T_sup_219"] - df["T_ret_219"]) 
+    df["P_rad_220_calc"] = (df["V_flow_220"]/1000)*(df["T_sup_220"] - df["T_ret_220"]) 
     # CO2 average:
 
     #df["P_rad_220"] = P_rad_220
@@ -496,24 +498,29 @@ Enable getting data by start, stop also
 #stop = pd.Timestamp("2024-03-01 00:00")
 #start = pd.Timestamp("2024-01-13 17:00")
 #start = pd.Timestamp("2025-01-12 17:00")
-start = pd.Timestamp("2025-01-30 00:00")
+#start = pd.Timestamp("2025-01-30 00:00")
 start = pd.Timestamp("2025-02-13 00:00")
-5#start = pd.Timestamp("2024-02-01 00:00")
 stop = pd.Timestamp("2025-02-20 00:00")
 #data = get_observations(res=res, start=str(start), stop=str(stop))
-data = get_observations(res=res, start=start, stop=stop)
-data["P_rad_219_calc"] = (data["V_flow_219"]/1000)*(data["T_sup_219"] - data["T_ret_219"]) 
-data["P_rad_220_calc"] = (data["V_flow_220"]/1000)*(data["T_sup_220"] - data["T_ret_220"]) 
-data = data.resample(rule="15min").mean()
-data.index = data.index.tz_convert("Europe/Oslo")
+data_feb = get_observations(res=res, start=start, stop=stop)
+data_feb = data_feb.resample(rule="15min").mean()
+
+start = pd.Timestamp("2025-03-07 00:00")
+stop = pd.Timestamp("2025-03-12 00:00")
+#data = get_observations(res=res, start=str(start), stop=str(stop))
+data_mar = get_observations(res=res, start=start, stop=stop)
+data_mar = data_mar.resample(rule="15min").mean()
+
+#data = data.resample(rule="15min").mean()
+#data.index = data.index.tz_convert("Europe/Oslo")
 #data.to_csv("ZEBLab_nov23_feb24_%s.csv" % (res, ))5
-data.to_csv("ZEBLab_feb25_%s_MPC_219_1min.csv" % (res, ))
+#data.to_csv("ZEBLab_feb25_%s_MPC_219_1min.csv" % (res, ))
 #data.to_csv("ZEBLab_dec24_%s.csv" % (res, ))
 #ax = data[["T_219_TR1","T_219_TR2","T_219_TR3","T_219_TR4"]].mean(axis=1).plot()
-ax = data["P_rad_220"].plot(color="r")
-ax1 = ax.twinx()
-data[["P_rad_219"]].plot(ax=ax1, color="y")
-plt.show()
+#ax = data["P_rad_220"].plot(color="r")
+#ax1 = ax.twinx()
+#data[["P_rad_219"]].plot(ax=ax1, color="y")
+#plt.show()
+#print(data)
 
-
-print(data)
+print(data_feb)
