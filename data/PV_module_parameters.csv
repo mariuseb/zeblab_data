@@ -1,0 +1,8 @@
+Name;Description;surface_tilt;surface_azimuth;A_MOD;N_MOD;n_nom;U_L;a_temp;phi_array;tau_alpha;n_inv;phi_soil
+Roof;Sunpower SPR-X21-350;30;180;1.63;280;21.5;25;0.29;5.5;0.8;98.5;2
+Pergola_1;Solitek;40;180;1.65;21;17.6;30;0.35;5.5;0.8;98.5;2
+Pergola_2;Sunpower 375 MAXEON P3-375W?;40;180;1.65;21;21.5;30;0.29;5.5;0.8;98.5;2
+South;Solarlab;90;180;1.09;132;17.6;25;0.33;5.5;0.8;98.5;2
+East;Solarlab;90;90;1.09;144;17.6;25;0.33;5.5;0.8;98.5;2
+West;Solarlab x 58 (73);90;246;1.09;58;17.6;25;0.33;5.5;0.8;98.5;2
+North;Sunpower 375 MAXEON P3-375W;90;0;1.63;30;21.5;25;0.29;5.5;0.8;98.5;2

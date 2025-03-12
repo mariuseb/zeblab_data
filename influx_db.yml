@@ -1,0 +1,9 @@
+name: zeblab
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - influxdb
+  - pandas
+  - matplotlib
+  - influxdb_client
